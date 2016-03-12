@@ -2,6 +2,7 @@
 
 namespace Algorithms
 {
+
     public static class Algorithms
     {
         public static int Gcd(int m, int n)
@@ -89,6 +90,10 @@ namespace Algorithms
             Console.WriteLine(Algorithms.Gcd(n, m));
             var e = Algorithms.ExtendedEuclid(m, n);
             Console.WriteLine(string.Format("{0}*{1} + {2}*{3} = {4}", e[0], m, e[1], n, e[2]));
+
+            Console.WriteLine("big int: {0}", EuclidBigInteger.GcdBigInteger(
+                "1234672314612341234127164073861243761234612034126430123641234631234551",
+                "17123471236941726340712360412364012373460712364123069111"));
         }
     }
 }
