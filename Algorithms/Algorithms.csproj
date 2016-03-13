@@ -37,6 +37,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1.2.2\1.2.2.NumbersPowersAndLogarithms.cs" />
     <Compile Include="EuclidBigInteger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

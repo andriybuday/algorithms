@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Algorithms._1._2._2;
+using System;
 
 namespace Algorithms
 {
@@ -82,6 +83,9 @@ namespace Algorithms
 
         private void Run()
         {
+            Console.WriteLine(Math.Log10(2));
+            Console.WriteLine(LogarithmCalculation.Log10From2());
+
             Console.WriteLine(Algorithms.Gcd(12, 8));
             Console.WriteLine(Algorithms.Gcd(8, 12));
             var n = 551;
