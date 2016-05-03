@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Algorithms._1._2._2;
+using System;
 
 namespace Algorithms
 {
+
     public static class Algorithms
     {
         public static int Gcd(int m, int n)
@@ -81,14 +83,21 @@ namespace Algorithms
 
         private void Run()
         {
-            //Console.WriteLine(Algorithms.Gcd(12, 8));
-            //Console.WriteLine(Algorithms.Gcd(8, 12));
-            //var n = 551;
-            //var m = 1769;
-            //Console.WriteLine(Algorithms.Gcd(m, n));
-            //Console.WriteLine(Algorithms.Gcd(n, m));
-            //var e = Algorithms.ExtendedEuclid(m, n);
-            //Console.WriteLine(string.Format("{0}*{1} + {2}*{3} = {4}", e[0], m, e[1], n, e[2]));
+            Console.WriteLine(Math.Log10(2));
+            Console.WriteLine(LogarithmCalculation.Log10From2());
+
+            Console.WriteLine(Algorithms.Gcd(12, 8));
+            Console.WriteLine(Algorithms.Gcd(8, 12));
+            var n = 551;
+            var m = 1769;
+            Console.WriteLine(Algorithms.Gcd(m, n));
+            Console.WriteLine(Algorithms.Gcd(n, m));
+            var e = Algorithms.ExtendedEuclid(m, n);
+            Console.WriteLine(string.Format("{0}*{1} + {2}*{3} = {4}", e[0], m, e[1], n, e[2]));
+
+            Console.WriteLine("big int: {0}", EuclidBigInteger.GcdBigInteger(
+                "1234672314612341234127164073861243761234612034126430123641234631234551",
+                "17123471236941726340712360412364012373460712364123069111"));
             new InsertionSortTests().Run();
         }
     }
