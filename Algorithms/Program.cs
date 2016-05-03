@@ -81,14 +81,33 @@ namespace Algorithms
 
         private void Run()
         {
-            Console.WriteLine(Algorithms.Gcd(12, 8));
-            Console.WriteLine(Algorithms.Gcd(8, 12));
-            var n = 551;
-            var m = 1769;
-            Console.WriteLine(Algorithms.Gcd(m, n));
-            Console.WriteLine(Algorithms.Gcd(n, m));
-            var e = Algorithms.ExtendedEuclid(m, n);
-            Console.WriteLine(string.Format("{0}*{1} + {2}*{3} = {4}", e[0], m, e[1], n, e[2]));
+            //Console.WriteLine(Algorithms.Gcd(12, 8));
+            //Console.WriteLine(Algorithms.Gcd(8, 12));
+            //var n = 551;
+            //var m = 1769;
+            //Console.WriteLine(Algorithms.Gcd(m, n));
+            //Console.WriteLine(Algorithms.Gcd(n, m));
+            //var e = Algorithms.ExtendedEuclid(m, n);
+            //Console.WriteLine(string.Format("{0}*{1} + {2}*{3} = {4}", e[0], m, e[1], n, e[2]));
+            new InsertionSortTests().Run();
+        }
+    }
+
+
+    public class InsertionSortTests
+    {
+        public void Run()
+        {
+            var a = new int[] { 5, 2, 4, 6, 1, 3 };
+            InsertionSort.Sort(a);
+            var expected = new int[] { 1, 2, 3, 4, 5, 6 };
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] != expected[i])
+                {
+                    throw new Exception("Basic insertion sort test fail.");
+                }
+            }
         }
     }
 }
