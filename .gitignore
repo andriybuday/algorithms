@@ -1,3 +1,6 @@
 Algorithms/bin/
 Algorithms/packages/
 Algorithms/obj/
+*/**/node_modules/**/*
+*/**/bin/**/*
+*/**/obj/**/*
