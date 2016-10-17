@@ -11,8 +11,9 @@ using System.Linq;
 public class MaximumSubarrayCLRS
 {
     public Tuple<int, int, int> divideAndConquer(int[] input) {
-        if(input.Length <= 1) throw new Exception("wrong input");        
-        var result = divideAndConquer(input, 0, input.Length - 1);
+        if(input.Length <= 1) throw new Exception("wrong input");
+        var priceChangeInput = PreprocessPriceChangeArray(input);        
+        var result = divideAndConquer(priceChangeInput, 0, priceChangeInput.Length - 1);
         return (result.Item3 < 0) ? result : new Tuple<int, int, int> (-1, -1, -1);
     }
 
@@ -71,19 +72,13 @@ public class MaximumSubarrayCLRS
     }
 
     private Tuple<int, int, int> maxSubarrayNaive(int[] input, int a, int b) {
-        int N = b - a;
         int start = 0;
         int end = 0;
-
         int maxSum = int.MinValue;
-
-        for(int i = a; i <= b; i++){
-            for(int j = a; j <= b; j++){
-                int sum = 0;
-                for(int k = i; k <= j; k++){
-                    sum += input[k];
-                }
-                if(sum > maxSum){
+        for(int i = a; i <= b; i++) {
+            for(int j = i + 1; j <= b; j++) {
+                int sum = input[j] - input[i];
+                if(sum > maxSum) {
                     maxSum = sum;
                     start = i;
                     end = j;
@@ -91,8 +86,8 @@ public class MaximumSubarrayCLRS
             }    
         }
 
-        if(maxSum < 0){
-            return new Tuple<int, int, int> (0, 0, 0); 
+        if(maxSum < 0) {
+            return new Tuple<int, int, int> (-1, -1, -1); 
         }
 
         return new Tuple<int, int, int> (start, end, maxSum);
@@ -115,7 +110,7 @@ public class MaximumSubarrayCLRS
     public static int[] GenerateInputArray(int N){
         int[] a = new int[N];
         for(int i = 0; i < N; ++i) {
-            a[i] = new Random().Next(-5000, 5000);
+            a[i] = 1000 + new Random().Next(0, 5000);
         }
         return a;
     }
@@ -132,9 +127,12 @@ public class MaximumSubarrayCLRS
 
             // simple test
             eq(0, (new MaximumSubarrayCLRS())
-                .divideAndConquer(new int[] {-1, 4, 5, -3}),
+                //.divideAndConquer(new int[] {-1, 4, 5, -3}),
+                //.divideAndConquer(new int[] {10, 9, 13, 18, 15}),
+                .maxSubarrayNaive(new int[] {10, 9, 13, 18, 15}),
                 new Tuple<int, int, int>(1, 2, 9));
-            var input = new int[] {-1, 4, -1, 5, -3, -3, 6};
+
+            var input = new int[] {10, 4, 11, 12, 10, 9, 10};
             var naiveResult = (new MaximumSubarrayCLRS()).maxSubarrayNaive(input);
             var divideResult = (new MaximumSubarrayCLRS()).divideAndConquer(input);
             eq(1, naiveResult.Item3, divideResult.Item3);

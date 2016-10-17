@@ -1,19 +1,38 @@
 {
-  "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable",
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "warningsAsErrors": true
   },
-  "dependencies": {},
+
+  "dependencies": {
+    "Microsoft.Extensions.Configuration.Binder": "1.0.0",
+    "Microsoft.Extensions.Configuration.CommandLine": "1.0.0",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.DependencyInjection": "1.0.0",
+    "Microsoft.Extensions.Logging": "1.0.0",
+    "Microsoft.Extensions.Logging.Console": "1.0.0",
+    "NETStandard.Library": "1.6.0"
+  },
+
   "frameworks": {
+    "net451": { },
+
     "netcoreapp1.0": {
       "dependencies": {
-        "Microsoft.NETCore.App": {
-          "type": "platform",
-          "version": "1.0.1"
-        }
       },
-      "imports": "dnxcore50"
+
+      "imports": [
+        "dnxcore50",
+        "dotnet5.6",
+        "portable-net451+win8"
+      ]
     }
+  },
+
+  "runtimes": {
+    "win7-x64": { },
+    "ubuntu.16.10-x64": { }
   }
 }
